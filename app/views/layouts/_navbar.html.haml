@@ -1,0 +1,33 @@
+%ul.nav.navbar-nav
+  %li.active
+    = link_to "Home", root_path
+  %li
+    %a{:href => "#about"} About
+  %li
+    %a{:href => "#contact"} Contact
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      Dropdown
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        %a{:href => "#"} Action
+      %li
+        %a{:href => "#"} Another action
+      %li
+        %a{:href => "#"} Something else here
+      %li.divider
+      %li.dropdown-header Nav header
+      %li
+        %a{:href => "#"} Separated link
+      %li
+        %a{:href => "#"} One more separated link
+%ul.nav.navbar-nav.navbar-right
+  - if current_user
+    %li
+      = link_to "Logout", destroy_user_session_path, method: :destroy
+  - else
+    %li
+      = link_to "Register", new_user_registration_path
+    %li
+      = link_to "Login", new_user_session_path

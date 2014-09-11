@@ -1,0 +1,40 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    / %link{:href => "../../assets/ico/favicon.ico", :rel => "shortcut icon"}
+    %title Rails Application
+    / Bootstrap core CSS
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+    / Just for debugging purposes. Don't actually copy this line!
+    /[if lt IE 9] <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  %body{:role => "document"}
+    / Fixed navbar
+    .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "Rails Application", root_path, class: "navbar-brand"
+        .navbar-collapse.collapse
+          = render 'layouts/navbar'
+        / /.nav-collapse
+    .container.theme-showcase{:role => "main"}
+      - if notice || alert
+        %p.notice= notice
+        %p.alert= alert
+      = yield
